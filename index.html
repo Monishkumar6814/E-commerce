@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopSphere</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nova+Mono&family=Ojuju:wght@200..800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playwrite+DE+VA+Guides&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nova+Mono&family=Ojuju:wght@200..800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playwrite+DE+VA+Guides&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap');
+  body{
+    background-color: rgb(237, 229, 219);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .header{
+    position: relative;
+  }
+  .logo{
+  display:block;
+  position: relative;
+  margin-left: 60px;
+  
+}
+.nav{
+    max-width: 1400px; 
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top:10px;
+
+    }
+
+
+.btn{
+    width: 110px;
+    height: 35px;
+    border: none;
+    margin-top: 10px;
+    margin-left: 30px;
+    font-size: 1rem;
+    background-color:rgb(241, 210, 159);
+    color:rgb(39, 36, 36);
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 3px;
+    font-family: "Roboto Condensed", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+        
+}
+.btn:hover{
+  background-color: rgb(225, 127, 77);
+}
+.btn-clicked{
+  background-color: rgb(225, 127, 77);
+}
+
+.intro{
+  margin-left:-50px;
+  margin-top: -10px;
+  flex-grow: 1;
+}
+  .store_name{
+  color: rgb(225, 127, 77);
+  margin-top: 90px;
+  margin-left: 130px;
+  font-family: "PT Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+  .shop{
+  color: rgb(225, 127, 77);
+  font-size: 500%;
+  margin-left: 130px;
+  margin-top: -10px;
+  }
+  .gmail_h{
+    color: rgb(225, 127, 77);
+    font-weight: bolder;
+    font-size: 200%;
+    margin-left: 130px;
+    margin-top: 0px;
+  }
+
+  .spots{
+    margin-left: 780px;
+    margin-top: -380px;
+    
+  }
+  .items {
+  margin-left: 820px;
+  margin-top: -450px; 
+  display:block;
+  position: relative;
+  z-index: 1;
+}
+.milk{
+  margin-left: 1090px;
+  margin-top: -180px;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+.egg{
+  margin-left: 720px;
+  margin-top: -150px;
+  display: block;
+  position: relative;
+  z-index: 3;
+}
+.star{
+  margin-left: 1150px;
+  margin-top: -370px;
+  display: block;
+  position: relative;
+  z-index: 3;
+}
+.mobile{
+  margin-left: 760px;
+  margin-top: -80px;
+}
+.buds{
+  display: block;
+  margin-left: 1160px;
+  margin-top: -150px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .nav {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    margin-left: 10px;
+    font-size: 0.8rem;
+    width: 90px;
+    height: 30px;
+  }
+  .store_name {
+    margin-left: 100px;
+    font-size: 1.8rem;
+  }
+  .shop {
+    font-size: 4rem;
+    margin-left: 100px;
+  }
+  .gmail_h {
+    font-size: 1.5rem;
+    margin-left: 100px;
+  }
+  .spots {
+    margin-left: 600px;
+    margin-top: -350px;
+    width: 400px;
+    height: 400px;
+  }
+  .items {
+    margin-left: 650px;
+    width: 300px;
+    height: 300px;
+  }
+  .milk {
+    margin-left: 900px;
+    margin-top: -150px;
+    width: 130px;
+    height: 150px;
+  }
+  .egg {
+    margin-left: 650px;
+    margin-top: -120px;
+    width: 220px;
+    height: 220px;
+  }
+  .star {
+    margin-left: 980px;
+    margin-top: -300px;
+    width: 70px;
+    height: 70px;
+  }
+  .mobile {
+    margin-left: 650px;
+    margin-top: -60px;
+  }
+  .buds {
+    margin-left: 980px;
+    margin-top: -120px;
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn {
+    width: 80px;
+    height: 25px;
+    font-size: 0.7rem;
+    margin: 5px;
+  }
+  .store_name, .shop, .gmail_h {
+    margin-left: 50px;
+  }
+  .store_name {
+    font-size: 1.5rem;
+  }
+  .shop {
+    font-size: 3rem;
+  }
+  .gmail_h {
+    font-size: 1.2rem;
+  }
+  .spots {
+    margin-left: 400px;
+    width: 300px;
+    height: 300px;
+  }
+  .items {
+    margin-left: 450px;
+    width: 250px;
+    height: 250px;
+  }
+  .milk {
+    margin-left: 600px;
+    margin-top: -100px;
+    width: 100px;
+    height: 120px;
+  }
+  .egg {
+    margin-left: 400px;
+    margin-top: -90px;
+    width: 180px;
+    height: 180px;
+  }
+  .star {
+    margin-left: 650px;
+    margin-top: -220px;
+    width: 50px;
+    height: 50px;
+  }
+  .mobile {
+    margin-left: 450px;
+    margin-top: -40px;
+  }
+  .buds {
+    margin-left: 650px;
+    margin-top: -100px;
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn {
+    width: 70px;
+    height: 20px;
+    font-size: 0.6rem;
+    margin: 3px;
+  }
+  .store_name, .shop, .gmail_h {
+    margin-left: 20px;
+    text-align: center;
+  }
+  .store_name {
+    font-size: 1.2rem;
+  }
+  .shop {
+    font-size: 2.5rem;
+  }
+  .gmail_h {
+    font-size: 1rem;
+  }
+  .spots {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+  }
+  .items, .milk, .egg, .star, .mobile, .buds {
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  .items {
+    width: 200px;
+    height: 200px;
+  }
+  .milk {
+    width: 80px;
+    height: 100px;
+  }
+  .egg {
+    width: 150px;
+    height: 150px;
+  }
+  .star {
+    width: 40px;
+    height: 40px;
+  }
+  .mobile {
+    width: 80px;
+  }
+  .buds {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn {
+    width: 80px;
+    height: 30px;
+    font-size: 0.7rem;
+    margin: 5px;
+  }
+  .intro {
+    margin-left: 0;
+    text-align: center;
+  }
+  .store_name {
+    font-size: 1.5rem;
+    margin: 0 auto;
+  }
+  .shop {
+    font-size: 2.5rem;
+    margin: 0 auto;
+  }
+  .gmail_h {
+    font-size: 1.2rem;
+    margin: 0 auto;
+  }
+  .spots {
+    margin: 20px auto;
+    width: 200px;
+    height: 200px;
+  }
+  .items {
+    margin: 10px auto;
+    width: 200px;
+    height: 200px;
+  }
+  .milk, .egg, .star, .mobile, .buds {
+    margin: 10px auto;
+    display: block;
+    transform: none;
+  }
+  .milk {
+    width: 100px;
+    height: 100px;
+  }
+  .egg {
+    width: 120px;
+    height: 120px;
+  }
+  .star {
+    width: 50px;
+    height: 50px;
+  }
+  .mobile {
+    width: 80px;
+  }
+  .buds {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn {
+    width: 70px;
+    height: 25px;
+    font-size: 0.6rem;
+    margin: 3px;
+  }
+  .intro {
+    text-align: center;
+  }
+  .store_name {
+    font-size: 1.2rem;
+  }
+  .shop {
+    font-size: 2rem;
+  }
+  .gmail_h {
+    font-size: 1rem;
+  }
+  .spots,
+  .items,
+  .milk,
+  .egg,
+  .star,
+  .mobile,
+  .buds {
+    margin: 10px auto;
+    display: block;
+  }
+  .spots {
+    width: 180px;
+    height: 180px;
+  }
+  .items {
+    width: 180px;
+    height: 180px;
+  }
+  .milk {
+    width: 80px;
+    height: 80px;
+  }
+  .egg {
+    width: 100px;
+    height: 100px;
+  }
+  .star {
+    width: 40px;
+    height: 40px;
+  }
+  .mobile {
+    width: 70px;
+  }
+  .buds {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+
+</style>
+<body>
+
+  <div class="nav">
+  <button class="btn btn-clicked" data-filter="all" onclick="window.location.href='index.html';">Home</button>
+  <button class="btn"onclick="window.location.href='products.html';">Products</button>
+  <button class="btn "onclick="window.location.href='products.html#about';">About</button>
+  <button class="btn"onclick="window.location.href='products.html#contact';">Contact</button>
+  <button class="btn" style="margin-right: 30px;"onclick="window.location.href='/signup.html';">SignUp</button>
+</div>
+
+<div class="intro">
+<h1 class="store_name">ShopSphere</h1>
+<p class="shop">Unbeatable <br>Online Deals</p>
+<p class="gmail_h">@ShopSphere.com</p>
+<img  class="spots" src="./assets/spots.png" alt="blop" width="450px" height="450px">
+<img class="items" src="./assets/vegetable.png" alt="veg_image" width="350px" height="350px">
+<img class="milk" src="./assets/milk.png" alt="milk" width="150px" height="170px">
+<img class="egg" src="./assets/removed-background.png" alt="egg" width="250px" height="250px">
+<img class="star" src="./assets/star.png" alt="star" width="80px" height="80px">
+<img class="mobile" src="./assets/mobile.png" alt="mobile" width="100px" height="" >
+<img class="buds" src="./assets/buds.png" alt="buds" width="220px" height="220px" >
+<!--<img class="watch" src="./assets/watch.png" alt="watch" width="250px" height="250px" >-->
+</div>
+</div> 
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+        body {
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+        .cart-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+        }
+        .cart-item-details {
+            flex: 1;
+            margin-left: 20px;
+        }
+        .cart-item-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+        .cart-item-price {
+            color: #555;
+        }
+        .cart-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        .cart-total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        .btn-checkout {
+            padding: 10px 20px;
+            background-color:rgb(230, 85, 28);
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .btn-checkout:hover {
+            background-color:rgb(225, 127, 77);
+        }
+        .btn-remove {
+            background-color: #f44336;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-remove:hover {
+            background-color: #e53935;
+        }
+
+
+
+
+        /* Responsive Design */
+@media (max-width: 768px) {
+    .cart-container {
+        padding: 15px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    .cart-item img {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 10px;
+    }
+    .cart-item-details {
+        margin-left: 0;
+    }
+    .cart-item-name {
+        font-size: 1rem;
+    }
+    .cart-item-price {
+        font-size: 0.9rem;
+    }
+    .cart-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .cart-total {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    .btn-checkout {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .cart-container {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 1.2rem;
+    }
+    .cart-item img {
+        width: 60px;
+        height: 60px;
+    }
+    .cart-item-name {
+        font-size: 0.9rem;
+    }
+    .cart-item-price {
+        font-size: 0.8rem;
+    }
+    .btn-checkout {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+    .btn-remove {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="cart-container">
+        <h1>Your Cart</h1>
+        <div id="cart-items">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total" id="cart-total">
+                Total: ₹0
+            </div>
+            <button class="btn-checkout">Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        // Display cart functionality
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const cartContainer = document.getElementById("cart-items");
+            cartContainer.innerHTML = ""; // Clear existing items
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+                document.getElementById("cart-total").innerText = "Total: ₹0";
+                return;
+            }
+
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement("div");
+                cartItem.classList.add("cart-item");
+
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">₹${item.price}</div>
+                    </div>
+                    <button class="btn-remove" onclick="removeFromCart(${index})">Remove</button>
+                `;
+
+                cartContainer.appendChild(cartItem);
+                total += parseInt(item.price);
+            });
+
+            document.getElementById("cart-total").innerText = `Total: ₹${total}`;
+        }
+
+        // Remove from cart functionality
+        function removeFromCart(index) {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.splice(index, 1); // Remove the item at the specified index
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert("Item has been removed from your cart!");
+            displayCart(); // Refresh cart display
+        }
+
+        // Initial cart display
+        displayCart();
+    </script>
+</body>
+</html>
