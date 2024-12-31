@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Nova+Mono&family=Ojuju:wght@200..800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playwrite+DE+VA+Guides&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap');
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color:rgb(237, 229, 219);
+        font-family: "Roboto Condensed", serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+    }
+    html{
+        font-size: 22px; 
+        scroll-behavior: smooth;
+    }
+    .nav{
+        background-image: url(./assets/banner/b6.png);
+        background-repeat: no-repeat;
+        background-size:cover;
+        max-width: 1400px; 
+        padding-top: 50px;
+        padding-bottom:205px; 
+        display: flex;
+        align-items: center;
+    }
+    .btn{
+        width: 110px;
+        height: 40px;
+        border: none;
+        margin-left: 30px;
+        font-size: 0.7rem;
+        background-color:rgb(241, 210, 159);
+        color:rgb(39, 36, 36);
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius: 3px;
+        font-family: "Roboto Condensed", serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+        
+    }
+    .btn:hover
+    {
+        background-color:rgb(225, 127, 77);
+    }
+
+    #Search{
+        outline: none;
+        width: 200px;
+        height: 40px;
+        margin-left: 500px;
+        background-color: white;
+        border: 2px solid rgb(225, 127, 77);
+        border-radius: 3px;
+        padding: 0px 10px;
+        font-size: 0.6rem;
+    }
+    .watch{
+        margin-top: 30px;
+        justify-self: start;
+        margin-left: 90px;
+        height: 70px;
+        font-size: 130%;
+        font-family: "Roboto Slab", serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+        
+    }
+    .container{
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: repeat(6,1fr);
+        gap: 40px 40px ;
+        justify-self: center;
+        
+    }
+    .box{
+        height: 8rem;
+        width: 161px;
+        border: 5px solid white;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    .box img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.5s;
+        transform-origin: top;
+    
+
+    }
+    .box img:hover{
+        transform:scale(1.5);
+    }
+    /*footer css*/
+    .footer{
+        text-align: center;
+        margin-top: 4rem;
+    }
+    .btn-ord{
+        width: 100px;
+        height: 30px;
+        border: none;
+        font-size: 0.6rem;
+        background-color:rgb(241, 210, 159);
+        color:rgb(39, 36, 36);
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius: 3px;
+
+    }
+    .btn-ord:hover{
+        background-color:rgb(225, 127, 77);
+    }
+    
+
+
+
+    /* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+    #Search {
+        margin-left: 300px;
+    }
+    .btn {
+        margin-left: 10px;
+        font-size: 0.6rem;
+        width: 90px;
+        height: 35px;
+    }
+    .btn-ord {
+        width: 80px;
+        height: 25px;
+        font-size: 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    #Search {
+        width: 150px;
+        margin-left: 50px;
+    }
+    .btn {
+        margin-left: 5px;
+        font-size: 0.5rem;
+        width: 70px;
+        height: 30px;
+    }
+    .btn-ord {
+        width: 70px;
+        height: 20px;
+        font-size: 0.4rem;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    #Search {
+        width: 100px;
+        margin-left: 0;
+        font-size: 0.5rem;
+    }
+    .btn {
+        margin-left: 0;
+        font-size: 0.4rem;
+        width: 60px;
+        height: 25px;
+    }
+    .btn-ord {
+        width: 60px;
+        height: 20px;
+        font-size: 0.3rem;
+    }
+    h1 {
+        font-size: 1.2rem;
+    }
+    .watch {
+        font-size: 1rem;
+        margin-left: 10px;
+    }
+}
+
+</style>
+</head>
+<body>
+<div class="nav">
+    <button class="btn" data-filter="all" onclick="window.location.href='index.html';">Home</button>
+    <button class="btn "onclick="window.location.href='#about';">About</button>
+    <button class="btn"onclick="window.location.href='#contact';">Contact</button>
+    <button class="btn"onclick="event.preventDefault(); window.location.href='/cart.html';">Cart</button>
+<input type="text" placeholder="Search" id="Search">
+<button class="btn" style="margin-right: 30px;"onclick="window.location.href='/signup.html';">SignUp</button>
+</div>
+
+<h1 style="text-align: center; margin-top: 20px;">Our Products</h1>
+<section class="watch">Watches</section>
+<div class="container">
+    <div class="box" data-item="Watch"><img src="./assets/container/Boult Crown Smartwatch.webp" width="170px" height="170px">
+    </div><p>price:-1200<br>Smartwatch with "1.95"(4.95cm) Screen 900 Nits Display and Free Strap adjustment...
+        <button class="btn-ord" onclick="event.preventDefault(); addToCart('Boult Crown Smartwatch', 1200, './assets/container/Boult Crown Smartwatch.webp')">
+            Add to Cart
+        </button>
+        </p>
+
+    <div class="box"data-item="Watch"><img src="./assets/container/Noise ColorFit Quad Call Smartwatch.webp" width="170px" height="170px"></div>
+    <p>price:-2299<br>Noise Watch 3 Active . Enjoy the convenience of having all your notifications...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Noise ColorFit Quad Call Smartwatch', 2299, './assets/container/Noise ColorFit Quad Call Smartwatch.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Watch"><img src="./assets/container/Redmi Watch 5 Active.webp" width="170px" height="170px"></div>
+    <p>price:-1499<br>	Noise ColorFit Pulse Grand Smart Watch with 1.69 HD Display R...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Redmi Watch 5 Active', 1499, './assets/container/Redmi Watch 5 Active.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Watch"><img src="./assets/container/Timewear.webp" width="170px" height="170px"></div>
+    <p>price:-1995<br>Titan Karishma Analog Watch for Men.This watch from Titan's...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Timewear', 1995, './assets/container/Timewear.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Watch"><img src="./assets/container/shopping.webp" width="170px" height="170px"></div>
+    <p>price:-1367<br>Mast & Harbour Unisex Black Analogue Watch MFB-PN-WTH-M...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('shopping', 1367, './assets/container/shopping.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Watch"><img src="./assets/container/shopping (1).webp" width="170px" height="170px"></div>
+    <p>price:-1179<br>Allen Solly Analog Watch - For Men.  Occasion Is Casual...
+   <button class="btn-ord" onclick="event.preventDefault(); addToCart('shopping (1)', 1179, './assets/container/shopping (1).webp')">
+     Add to Cart
+    </button> </p>
+    
+</div>
+
+<section class="watch">Ear Buds</section>
+<div class="container">
+    <div class="box"data-item="Buds"><img src="./assets/container/true buds.jpg" width="170px" height="170px"></div>
+    <p>price:-1599<br>boAt Immortal 101 TWS Wireless Earbuds with Beast Mode, ASAP...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Boat Immortal buds', 1599, './assets/container/true buds.jpg')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Buds"><img src="./assets/container/samsung galaxy in earbuds.jpg" width="170px" height="170px"></div>
+    <p>price:-1299 <br>Noise Buds Connect Truly Wireless in Ear Earbuds with...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Noise in earbuds', 1299, './assets/container/samsung galaxy in earbuds.jpg')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Buds"><img src="./assets/container/one plus nord buds.jpg" width="170px" height="170px"></div>
+    <p>price:-1800<br>JBL Wave Buds Earbuds - Black. Enjoy your favourite tunes... 
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('One plus nord buds', 1800, './assets/container/one plus nord buds.jpg')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Buds"><img src="./assets/container/noise.jpg" width="170px" height="170px"></div>
+    <p>price:-1499<br>	Noise Buds Connect 2 With Dual Pairing, Quad Mic With Enc & I
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Noise Buds Connect 2', 1499, './assets/container/noise.jpg')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Buds"><img src="./assets/container/noise 2r.webp" width="170px" height="170px"></div>
+    <p>price:-1999<br>OnePlus Nord Buds 2r True Wireless in Ear Earbuds w...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('OnePlus Nord 2r', 1999, './assets/container/noise 2r.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Buds"><img src="./assets/container/shopping (2).webp" width="170px" height="170px"></div>
+    <p>price:-993<br>Noise Buds Vs202 Bluetooth Earbuds (24 Hrs Playtime) with Enc & Dual...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Noise Buds Vs202', 993, './assets/container/shopping (2).webp')">
+    Add to Cart
+    </button></p>
+</div>
+	
+<section class="watch">Mobiles</section>
+<div class="container">
+    <div class="box"data-item="Mobiles"><img src="./assets/mobiles/moto.jpg" width="170px" height="170px"></div>
+    <p>price:-7999<br>MOTOROLA g35 5G Guava Red (4GB RAM, 128GB Storage) Smartphone...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('MOTOROLA g35 5G ', 7999, './assets/mobiles/moto.jpg')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Mobiles"><img src="./assets/mobiles/realme xt.webp" width="170px" height="170px"></div>
+    <p>price:-15,669<br>Realme XT 64 GB (Pearl Blue, 4 GB RAM) 64MP+8MP+2MP+2MP rear camera,6.5-inch Super AMOLED...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Realme XT 64 GB', 15669, './assets/mobiles/realme xt.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Mobiles"><img src="./assets/mobiles/realmex2pro.jpg" width="170px" height="170px"></div>
+    <p>price:-33,844<br>Realme X2 Pro (Neptune Blue, 256 GB, 12 GB RAM)Buy Realme...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Realme X2 Pro 5G', 33844, './assets/mobiles/realmex2pro.jpg')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Mobiles"><img src="./assets/mobiles/samsung s24 ultra.webp" width="170px" height="170px"></div>
+    <p>price:-1,21,999<br>Samsung Galaxy S24 Ultra - 256 GB - Titanium Black Welcome to the...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Samsung Galaxy S24 Ultra -256 GB', 121999, './assets/mobiles/samsung s24 ultra.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Mobiles"><img src="./assets/mobiles/Moto G64.webp" width="170px" height="170px"></div>
+    <p>price:-16,999<br>moto g64 Motorola G64 5G 12GB + 256GB Mint Green.In The Box Is Handset  ...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Motorola G64 5G', 16999, './assets/mobiles/Moto G64.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box" data-item="Mobiles"><img src="./assets/mobiles/Nothing 2a.webp" width="170px" height="179px"></div>
+    <p>price:-22,469<br>Nothing Phone (2a) 5G 128 GB (Black,8 GB RAM)(6.7 inch) ...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Nothing Phone (2a) 5G', 22469, './assets/mobiles/Nothing 2a.webp')">
+    Add to Cart
+    </button></p>
+</div>
+
+<section class="watch">Vegetables</section>
+<div class="container">
+    <div class="box"data-item="Vegetables"><img src="./assets/vegetables/Cabbage.webp" width="170px" height="170px"></div>
+    <p>price:-21<br>Cabbage per pc (Approx 600 g - 1000 g) is your secret weapon for any recipe that...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Cabbage per pc (Approx 600 g - 1000 g) ', 21, './assets/vegetables/Cabbage.webp')">
+    Add to Cart
+    </button>
+    </p>
+
+    <div class="box"data-item="Vegetables"><img src="./assets/vegetables/cauliflower.webp" width="170px" height="170px"></div>
+    <p>price:-64<br>Fresh Cauliflower - Organically Grown, 1 pc.Fresho Organic products are organical...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Cauliflower-1 pc', 64, './assets/vegetables/cauliflower.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Vegetables"><img src="./assets/vegetables/beans.webp" width="170px" height="170px"></div>
+    <p>price:-30<br>Order Local Beans 500 g online at Jiomart and save.green beans rich in nut...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Beans 500 g', 30, './assets/vegetables/beans.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Vegetables"><img src="./assets/vegetables/capsicum green.webp" width="170px" height="170px"></div>
+    <p>price:-41<br>Green Capsicum - (250 - 300) g Slightly less ripe, it has vibrant colour and flavour....
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Green Capsicum - (250 - 300) g ', 41, './assets/vegetables/capsicum green.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Vegetables"><img src="./assets/vegetables/Green chilli.webp" width="170px" height="170px"></div>
+    <p>price:-8<br>Green Chilli, 100GM Green chilli is a popular and versatile spice green chilli...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Green Chilli - 100GM', 8, './assets/vegetables/Green chilli.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Vegetables"><img src="./assets/vegetables/Beetroot - (500 - 600)g.webp" width="170px" height="170px"></div>
+    <p>price:-21<br>Beetroot - (500 - 600)g It has a sweet taste and it is usually of a dark crimson...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Beetroot - (500 - 600)g', 21, './assets/vegetables/Beetroot - (500 - 600)g.webp')">
+    Add to Cart
+    </button></p>
+
+</div>
+
+<section class="watch">Fruits</section>
+<div class="container">
+    <div class="box"data-item="Fruits"><img src="./assets/fruits/Guava.webp" width="170px" height="170px"></div>
+    <p>price:-34<br>Fresho Guava - Pink 1 pc(approx 300 - 400) native to South America where they...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Guava - Pink 1 pc(approx 300 - 400) ', 34, './assets/fruits/Guava.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Fruits"><img src="./assets/fruits/orange.webp" width="170px" height="170px"></div>
+    <p>price:-56<br>Fresho Orange - Kinnow, 1 kg Lovely, bright and glossy fruits called Kinnows...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Fresho Orange - Kinnow, 1 kg  ', 56, './assets/fruits/orange.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Fruits"><img src="./assets/fruits/grapes.webp" width="170px" height="170px"></div>
+    <p>price:-32<br>Fresh Grapes 500 g From the manufacturer Our Promise If any product doesn't...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Fresh Grapes 500 g ', 32, './assets/fruits/grapes.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Fruits"><img src="./assets/fruits/apple.webp" width="170px" height="170px"></div>
+    <p>price:-289<br>Apple Red Delicious 1 kg buy on shpoSphere. Directly sourced from farmers...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Apple Red Delicious 1 kg  ', 289, './assets/fruits/apple.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Fruits"><img src="./assets/fruits/papaya.webp" width="170px" height="170px"></div>
+    <p>price:-63<br>Papaya Normal 1.5 kg Order Papaya Normal 1.5 kg. Directly sourced from farmers...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Papaya Normal 1.5 kg ', 63, './assets/fruits/papaya.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Fruits"><img src="./assets/fruits/pomegranate.webp" width="170px" height="170px"></div>
+    <p>price:-211<br>With ruby color and an intense floral, sweet-tart flavor, the pomegranate...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Pomegranate - 1 kg', 211, './assets/fruits/pomegranate.webp')">
+    Add to Cart
+    </button></p>
+</div>
+	
+
+
+<section class="watch">Snacks</section>
+<div class="container">
+    <div class="box"data-item="Snacks"><img src="./assets/snacks/cookies.webp" width="170px" height="170px"></div>
+    <p>price:-10<br>Amul Butter Cookies 32 g (Pack) Amul Premium Butter cookies is made...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Amul Butter Cookies 32 g (Pack) ', 10, './assets/snacks/cookies.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Snacks"><img src="./assets/snacks/lays.webp" width="170px" height="170px"></div>
+    <p>price:-30<br>Lay's American Style Cream & Onion Chips Looking for a delicious...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Lays American Style Cream & Onion ', 30, './assets/snacks/lays.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Snacks"><img src="./assets/snacks/bites.webp" width="170px" height="170px"></div>
+    <p>price:-75<br>Cadbury Dairy Milk Bites- Hazelnut 40G Introducing Cadbury Dairy Milk Bites...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Cadbury Dairy Milk Bites ', 75, './assets/snacks/bites.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Snacks"><img src="./assets/snacks/thatta.webp" width="170px" height="170px"></div>
+    <p>price:-90<br>A2B Thattai - Fresh & Crunchy 200 g (24 pcs).The finest ingredients are ...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('A2B Thattai - Fresh & Crunchy 200 g ', 90, './assets/snacks/thatta.webp')">
+    Add to Cart
+    </button></p>
+
+    <div class="box"data-item="Snacks"><img src="./assets/snacks/muruku.webp" width="170px" height="170px"></div>
+    <p>price:-65<br>Haldiram's Nagpur Murukku, 200g,HALDIRAMS MURUKKU is a ...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Haldirams Nagpur Murukku, 200g ', 65, './assets/snacks/muruku.webp')">
+    Add to Cart
+    </button></p>
+    
+    <div class="box"data-item="Snacks"><img src="./assets/snacks/bingo.webp" width="170px" height="170px"></div>
+    <p>price:-18<br>Bingo Tedhe Medhe Chatpata Twist Indulge in the irresistible...
+    <button class="btn-ord" onclick="event.preventDefault(); addToCart('Bingo Tedhe Medhe', 18, './assets/snacks/bingo.webp')">
+    Add to Cart
+    </button></p>
+
+</div>
+
+<!--footer-->
+
+<footer class="footer">
+<section id="about">
+    <h4 >About Us</h4>
+    <p>We provide the best products at affordable prices.</p>
+</section>
+
+<section id="contact">
+    <h4>Contact Us</h4>
+    <p>Email: support@ecommerce.com</p>
+    <p>Phone: +1 123-456-7890</p>
+</section>
+    <p class="footer-bottom">&copy; 2024 E-commerce. All rights reserved.</p>
+</footer>
+<script src="./products.js"></script>
+</body>
+</html>
